@@ -3,9 +3,85 @@
     <div
       class="flex justify-content-center align-content-center text-align-center"
     >
-      <!-- login -->
+      <!-- LOGIN -->
       <form>
-        <p-card> </p-card>
+        <p-card
+          styleClass="mt-10"
+          header="Login"
+          subheader="Faça login com uma conta existente!"
+          *ngIf="loginCard"
+        >
+          <!-- inupt email -->
+          <div
+            class="flex justify-content-center align-content-center text-align-center"
+          >
+            <input type="email" pInputText placeholder="Email" />
+          </div>
+
+          <!-- input senha -->
+          <div
+            class="flex justify-content-center align-content-center text-align-center mt-3"
+          >
+            <input type="password" pInputText placeholder="Senha" />
+          </div>
+
+          <!-- botão login -->
+          <div class="card flex justify-content-center mt-3">
+            <button type="submit" pButton pRipple label="Login"></button>
+          </div>
+
+          <span
+            class="flex justify-content-center align-content-center text-align-center mt-3 text-red-600 font-semibold"
+            style="cursor: pointer"
+            (click)="loginCard = !loginCard"
+          >
+            Criar conta</span
+          >
+        </p-card>
+      </form>
+
+      <!-- SIGNUP -->
+      <form>
+        <p-card
+          styleClass="mt-10"
+          header="Criar conta"
+          subheader="Crie sua conta"
+          *ngIf="!loginCard"
+        >
+          <!-- inupt nome -->
+          <div
+            class="flex justify-content-center align-content-center text-align-center"
+          >
+            <input type="name" pInputText placeholder="Nome" />
+          </div>
+
+          <!-- inupt email -->
+          <div
+            class="flex justify-content-center align-content-center text-align-center mt-3"
+          >
+            <input type="email" pInputText placeholder="Email" />
+          </div>
+
+          <!-- input senha -->
+          <div
+            class="flex justify-content-center align-content-center text-align-center mt-3"
+          >
+            <input type="password" pInputText placeholder="Senha" />
+          </div>
+
+          <!-- botão signup -->
+          <div class="card flex justify-content-center mt-3">
+            <button type="submit" pButton pRipple label="Criar conta"></button>
+          </div>
+
+          <span
+            class="flex justify-content-center align-content-center text-align-center mt-3 text-red-600 font-semibold"
+            style="cursor: pointer"
+            (click)="loginCard = !loginCard"
+          >
+            Fazer login</span
+          >
+        </p-card>
       </form>
     </div>
   </div>
