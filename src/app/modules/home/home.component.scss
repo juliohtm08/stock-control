@@ -1,0 +1,13 @@
+.grid {
+  background-image: url("../../../assets/bg-image.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+@media screen and (min-with: 1400px) {
+  .grid {
+    background-position: top;
+  }
+}
