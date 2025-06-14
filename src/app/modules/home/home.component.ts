@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { MessageService } from 'primeng/api';
 import { AuthRequest } from 'src/app/models/interfaces/auth/AuthRequest';
 import { SignupUserRequest } from 'src/app/models/interfaces/user/SignupUserRequest';
 import { UserService } from 'src/app/services/user/user.service';
@@ -27,7 +28,8 @@ export class HomeComponent {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private messageService: MessageService
   ) {}
 
   // login do usuário
@@ -40,10 +42,25 @@ export class HomeComponent {
             this.cookieService.set('USER_INFO', response?.token);
 
             this.loginForm.reset(); // limpa o formulário
+
+            this.messageService.add({
+              severity: 'success', // Tipo do Toast
+              summary: 'Sucesso',
+              detail: `Bem vindo de volta ${response?.name}!`,
+              life: 2000,
+            });
           }
         },
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error', // Tipo do Toast
+            summary: 'Erro',
+            detail: `Erro ao fazer login!`,
+            life: 2000,
+          });
 
-        error: (err) => console.log(err),
+          console.log(err);
+        },
       });
     }
   }
@@ -56,12 +73,26 @@ export class HomeComponent {
         .subscribe({
           next: (response) => {
             if (response) {
-              alert('Usuário teste criado com sucesso!');
               this.signupForm.reset(); // limpa o formulário
               this.loginCard = true; // retorna a tela de login
+              this.messageService.add({
+                severity: 'success', // Tipo do Toast
+                summary: 'Sucesso',
+                detail: `Usuário criado com sucesso!`,
+                life: 2000,
+              });
             }
           },
-          error: (err) => console.log(err),
+          error: (err) => {
+            this.messageService.add({
+              severity: 'error', // Tipo do Toast
+              summary: 'Erro',
+              detail: `Erro ao cadastrar usuário!`,
+              life: 2000,
+            });
+
+            console.log(err);
+          },
         });
     }
   }
