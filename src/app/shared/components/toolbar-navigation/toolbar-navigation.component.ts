@@ -10,8 +10,9 @@ import { CookieService } from 'ngx-cookie-service';
 export class ToolbarNavigationComponent {
   constructor(private cookie: CookieService, private router: Router) {}
 
+  // método de logout
   handleLogout(): void {
-    this.cookie.delete('USER_INFO');
-    void this.router.navigate(['/home']);
+    this.cookie.delete('USER_INFO'); // remove o token
+    void this.router.navigate(['/home']); // redireciona para tela de login/cadastro
   }
 }
