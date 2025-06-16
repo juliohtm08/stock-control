@@ -1,5 +1,6 @@
 <p-toolbar styleClass="bg-indigo-800">
   <div class="p-toolbar-group-start">
+    <!-- botão para redirecioanr a tela principal -->
     <p-button
       icon="pi pi-home"
       label="Dashboard"
@@ -12,6 +13,7 @@
     ></p-button>
   </div>
 
+  <!-- botão de produtos -->
   <div class="p-toolbar-group-center">
     <p-button
       label="Produtos"
@@ -24,6 +26,8 @@
       routerLinkActive="exact_route"
       class="mr-2"
     ></p-button>
+
+    <!-- botão de categorias -->
     <p-button
       label="Categorias"
       icon="pi pi-ticket"
@@ -35,10 +39,12 @@
       routerLinkActive="exact_route"
       class="mr-2"
     ></p-button>
+
+    <!-- botão de efetuar venda -->
     <p-button
       label="Efetuar venda"
       icon="pi pi-credit-card"
-      routerLink="/produ"
+      routerLink="/products"
       styleClass="
       bg-indigo-800
       p-button-secondary
@@ -46,5 +52,16 @@
       routerLinkActive="exact_route"
       class="mr-2"
     ></p-button>
+  </div>
+
+  <!-- botão de logout -->
+  <div class="p-toolbar-group-end">
+    <p-button
+      label="Sair"
+      icon="pi pi-sign-out"
+      styleClass="p-button-danger"
+      (onClick)="handleLogout()"
+    >
+    </p-button>
   </div>
 </p-toolbar>
