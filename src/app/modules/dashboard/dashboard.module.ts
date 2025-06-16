@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/toolbar';
 import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
+import { ChartModule } from 'primeng/chart';
 
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { DASHBOARD_ROUTES } from './dashboard.routing';
@@ -27,6 +28,7 @@ import { CookieService } from 'ngx-cookie-service';
     ToolbarModule,
     CardModule,
     ToastModule,
+    ChartModule,
   ],
   providers: [MessageService, CookieService],
 })
