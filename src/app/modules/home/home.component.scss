@@ -11,3 +11,9 @@
     background-position: top;
   }
 }
+
+@media screen and (min-with: 1000px) {
+  .grid {
+    height: 100vmax;
+  }
+}
