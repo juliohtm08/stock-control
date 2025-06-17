@@ -1,4 +1,15 @@
 <app-toolbar-navigation></app-toolbar-navigation>
 
+<!--
+O pai escuta (productEvent) como se fosse um evento padrão HTML.
+
+O $event contém os dados emitidos (neste caso, um objeto { action, id }).
+
+-->
+
 <!-- recebe os dados dos produtos do componente pai (ProductsHome) -->
-<app-products-table [products]="productsDatas"></app-products-table>
+<app-products-table
+  [products]="productsDatas"
+  (productEvent)="handleProductAction($event)"
+>
+</app-products-table>
