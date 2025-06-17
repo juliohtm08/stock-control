@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { GetAllProductsResponse } from 'src/app/models/interfaces/products/response/GetAllProductsResponse';
 import { environment } from 'src/environments/environment';
 
+// busca os dados dos produtos diretamente da API
 @Injectable({
   providedIn: 'root',
 })
