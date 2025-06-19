@@ -20,7 +20,7 @@ export class CategoriesService {
 
   constructor(private http: HttpClient, private cookie: CookieService) {}
 
-  // busca todas as categorias
+  // busca todas as categorias na API
   getAllCategories(): Observable<Array<GetCategoriesResponse>> {
     return this.http.get<Array<GetCategoriesResponse>>(
       `${this.API_URL}/categories`,
