@@ -18,7 +18,7 @@ export class ProductsTableComponent {
   public addProductEvent = ProductEvent.ADD_PRODUCT_EVENT;
   public editProductEvent = ProductEvent.EDIT_PRODUCT_EVENT;
 
-  // dispara um evento como tipo de ação e, se necessário, o id
+  // dispara um evento de adição ou edição de produto
   handleProductEvent(action: string, id?: string): void {
     if (action && action !== '') {
       const productEventData = id && id !== '' ? { action, id } : { action };
