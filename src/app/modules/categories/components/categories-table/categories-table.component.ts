@@ -20,6 +20,7 @@ export class CategoriesTableComponent {
   public addCategoryAction = CategoryEvent.ADD_CATEGORY_ACTION;
   public editCategoryAction = CategoryEvent.EDIT_CATEGORY_ACTION;
 
+  // emite o evento de deletar categoria para o componente pai
   handleDeleteCategoryEvent(category_id: string, categoryName: string): void {
     if (category_id !== '' && categoryName !== '') {
       this.deleteCategoryEvent.emit({ category_id, categoryName });

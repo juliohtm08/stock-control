@@ -51,6 +51,7 @@ export class CategoriesHomeComponent implements OnInit, OnDestroy {
       });
   }
 
+  // ouve o evento de deleção mandado pelo comp. filho e abre um modal de confirmação
   handleDeleteCategoryAction(event: DeleteCategoryAction): void {
     if (event) {
       this.confirmationService.confirm({
@@ -64,6 +65,7 @@ export class CategoriesHomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  // caso o usuário confirme a deleção ele chama o service
   deleteCategory(category_id: string): void {
     if (category_id) {
       this.categoriesService
