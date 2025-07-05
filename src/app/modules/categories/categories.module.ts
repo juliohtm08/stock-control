@@ -22,9 +22,10 @@ import { CATEGORIES_ROUTES } from './categories.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoriesHomeComponent } from './page/categories-home/categories-home.component';
 import { CategoriesTableComponent } from './components/categories-table/categories-table.component';
+import { CategoriesFormComponent } from './components/categories-form/categories-form.component';
 
 @NgModule({
-  declarations: [CategoriesHomeComponent, CategoriesTableComponent],
+  declarations: [CategoriesHomeComponent, CategoriesTableComponent, CategoriesFormComponent],
   imports: [
     CommonModule,
     FormsModule,
