@@ -9,6 +9,7 @@ import { GetCategoriesResponse } from 'src/app/models/interfaces/categories/resp
 import { EventAction } from 'src/app/models/interfaces/products/event/EventAction';
 import { CreateProductRequest } from 'src/app/models/interfaces/products/request/CreateProductRequest';
 import { EditProductRequest } from 'src/app/models/interfaces/products/request/EditProductRequest';
+import { SaleProductRequest } from 'src/app/models/interfaces/products/request/SaleProductRequest';
 import { GetAllProductsResponse } from 'src/app/models/interfaces/products/response/GetAllProductsResponse';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ProductsService } from 'src/app/services/products/products.service';
@@ -183,6 +184,45 @@ export class ProductFormComponent implements OnInit, OnDestroy {
               life: 2500,
             });
             this.editProductForm.reset();
+          },
+        });
+    }
+  }
+
+  // manda os dados do produto para a api
+  handleSubmitSaleProduct(): void {
+    if (this.saleProductForm?.value && this.saleProductForm?.valid) {
+      const requestDatas: SaleProductRequest = {
+        amount: this.saleProductForm.value?.amount as number,
+        product_id: this.saleProductForm?.value?.product_id as string,
+      };
+
+      this.productService
+        .saleProduct(requestDatas)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (response) => {
+            if (response) {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Sucesso',
+                detail: 'Venda efetuada com sucesso!',
+                life: 2500,
+              });
+              this.saleProductForm.reset();
+              this.getProductDatas();
+              this.router.navigate(['/dashboard']);
+            }
+          },
+          error: (err) => {
+            console.log(err);
+            this.saleProductForm.reset();
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: 'Erro ao efetuar venda!',
+              life: 2500,
+            });
           },
         });
     }
