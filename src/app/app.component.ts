@@ -13,5 +13,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.primeNgConfig.ripple = true; // habilita o ripple
+    // traduz os botões de filtro na tabela
+    this.primeNgConfig.setTranslation({
+      apply: 'Aplicar',
+      clear: 'Limpar',
+    });
   }
 }

@@ -20,6 +20,7 @@ export class CategoriesService {
 
   constructor(private http: HttpClient, private cookie: CookieService) {}
 
+  // adiciona uma nova categoria
   createNewCategory(requestDatas: {
     name: string;
   }): Observable<Array<GetCategoriesResponse>> {
@@ -46,5 +47,22 @@ export class CategoriesService {
         category_id: requestDatas?.category_id,
       },
     });
+  }
+
+  // edita o nome da categoria
+  editCategoryName(requestDatas: {
+    name: string;
+    category_id: string;
+  }): Observable<void> {
+    return this.http.put<void>(
+      `${this.API_URL}/category/edit`,
+      { name: requestDatas?.name },
+      {
+        ...this.httpOptions,
+        params: {
+          category_id: requestDatas?.category_id,
+        },
+      }
+    );
   }
 }

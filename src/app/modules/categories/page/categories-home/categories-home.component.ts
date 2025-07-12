@@ -99,6 +99,7 @@ export class CategoriesHomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  // recebe o evento e abre um modal
   handleCategoryAction(event: EventAction): void {
     if (event) {
       this.ref = this.dialogService.open(CategoriesFormComponent, {

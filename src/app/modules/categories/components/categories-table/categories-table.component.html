@@ -54,16 +54,29 @@
               <div
                 class="flex justify-content-center gap-3 align-content-center align-items-center"
               >
+                <!-- botão de editar categoria -->
                 <button
                   pButton
                   pRipple
                   icon="pi pi-pencil"
+                  pTooltip="Editar Categoria"
+                  tooltipPosition="top"
                   class="p-button-rounded p-button-warning"
+                  (click)="
+                    handleCategoryEvent(
+                      editCategoryAction,
+                      category?.id,
+                      category?.name
+                    )
+                  "
                 ></button>
+                <!-- botão de deletar categoria -->
                 <button
                   pButton
                   pRipple
                   icon="pi pi-trash"
+                  pTooltip="Deletar Categoria"
+                  tooltipPosition="top"
                   class="p-button-rounded p-button-danger"
                   (click)="
                     handleDeleteCategoryEvent(category?.id, category?.name)

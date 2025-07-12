@@ -32,7 +32,29 @@ export class CategoriesFormComponent implements OnInit, OnDestroy {
     private categoriesService: CategoriesService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.categoryAction = this.ref.data; // recebe os dados do modal
+
+    // se a ação for de editar e o nome da categoria for valido, cham o método setCategoryName
+    if (
+      (this.categoryAction?.event?.action === this.editCategoryAction &&
+        this.categoryAction?.event?.categoryName !== null) ||
+      undefined
+    ) {
+      this.setCategoryName(this.categoryAction?.event?.categoryName as string);
+    }
+  }
+
+  // chama o método de acordo com o evento (adicionar ou editar categoria)
+  handleSubmitCategoryAction(): void {
+    if (this.categoryAction?.event?.action === this.addCategoryAction) {
+      this.handleSubmitAddCategory();
+    } else if (this.categoryAction?.event?.action === this.editCategoryAction) {
+      this.handleSubmitEditCategory();
+    }
+
+    return;
+  }
 
   handleSubmitAddCategory(): void {
     if (this.categoryForm?.value && this.categoryForm?.valid) {
@@ -66,6 +88,54 @@ export class CategoriesFormComponent implements OnInit, OnDestroy {
             });
           },
         });
+    }
+  }
+
+  // monta o objeto com nome e ID e manda para a api
+  handleSubmitEditCategory(): void {
+    if (
+      this.categoryForm?.value &&
+      this.categoryForm?.valid &&
+      this.categoryAction?.event?.id
+    ) {
+      const requestEditCategory: { name: string; category_id: string } = {
+        name: this.categoryForm?.value?.name as string,
+        category_id: this.categoryAction?.event?.id,
+      };
+
+      this.categoriesService
+        .editCategoryName(requestEditCategory)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: () => {
+            this.categoryForm.reset();
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Sucesso',
+              detail: 'Categoria editada com sucesso',
+              life: 2500,
+            });
+          },
+          error: (err) => {
+            console.log(err);
+            this.categoryForm.reset();
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: 'Erro ao editar categoria',
+              life: 2500,
+            });
+          },
+        });
+    }
+  }
+
+  // exibe o nome da categoria no modal
+  setCategoryName(categoryName: string): void {
+    if (categoryName) {
+      this.categoryForm.setValue({
+        name: categoryName,
+      });
     }
   }
 
