@@ -1,4 +1,10 @@
-import { Component, OnDestroy } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -13,8 +19,11 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent implements OnDestroy, AfterViewInit {
   private destroy$ = new Subject<void>();
+
+  @ViewChild('emailInput') public emailInputRef!: ElementRef;
+  @ViewChild('passwordInput') public passwordInputRef!: ElementRef;
   loginCard = true;
 
   loginForm = this.formBuilder.group({
@@ -35,6 +44,14 @@ export class HomeComponent implements OnDestroy {
     private messageService: MessageService,
     private router: Router
   ) {}
+
+  // após renderizar o DOM os campos são preenchidos automaticamente
+  ngAfterViewInit(): void {
+    this.emailInputRef.nativeElement.value = 'seu email aqui';
+    this.passwordInputRef.nativeElement.value = 'sua senha aqui';
+    console.log('seu email aqui => ' + this.emailInputRef);
+    console.log('sua senha aqui => ' + this.passwordInputRef);
+  }
 
   // login do usuário
   onSubmitLoginForm(): void {
