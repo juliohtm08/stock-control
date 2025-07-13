@@ -1,27 +1,47 @@
 # StockControl
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+StockControl é um sistema de controle de estoque que permite o gerenciamento de produtos, com funcionalidades como entrada, categorização, e efetuação de vendas. O sistema também conta com gráficos interativos para facilitar a visualização dos dados.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Tecnologias
 
-## Code scaffolding
+- [Angular 15] – Interface web 
+- [Node.js 18] – Backend leve e escalável
+- [PrimeNG] – Componentes UI
+- [Chart.js] – Visualização de dados com gráficos dinâmicos
+- [ngx-cookie-service] – Gerenciamento de cookies para autenticação e sessões
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🧩 Funcionalidades Principais
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- ✅ Cadastro e autenticação de usuários
+- 📦 Gerenciamento de estoque
+- 🏷️ Cadastro e organização por categorias
+- 💰 Registro e controle de vendas
+- 📊 Dashboards com gráficos para análise de estoque
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📦 Instalação
 
-## Running end-to-end tests
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/seu-usuario/stock-control.git
+   cd stock-control
+   ```
+   
+2. **Instale as dependências**:
+    ```bash
+     npm install
+    ```
+3. **Rode o projeto localmente**:
+    ```bash
+     npm run dev
+    ```
+    ou 
+    ```bash
+     ng s --o
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
