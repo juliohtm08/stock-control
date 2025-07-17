@@ -6,12 +6,11 @@ StockControl é um sistema de controle de estoque que permite o gerenciamento de
 
 ## 🚀 Tecnologias
 
-- [Angular 15] – Interface web 
-- [Node.js 18] – Backend leve e escalável
+- [Angular 15] – Frontend 
+- [Node.js 18] – Backend
 - [PrimeNG] – Componentes UI
 - [Chart.js] – Visualização de dados com gráficos dinâmicos
-- [ngx-cookie-service] – Gerenciamento de cookies para autenticação e sessões
-
+- [SQLite] - Banco de dados
 ---
 
 ## 🧩 Funcionalidades Principais
